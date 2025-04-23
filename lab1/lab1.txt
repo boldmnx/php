@@ -1,0 +1,27 @@
+SELECT table_name, column_name, referenced_table_name, referenced_column_name
+FROM information_schema.key_column_usage
+WHERE referenced_table_name IS NOT NULL;
+
+-- 2
+SELECT n.bookcode, n.bookname, n.author, n.bindex, n.page, t.tname, dt.dtname
+FROM book AS n
+INNER JOIN torol AS t ON n.tcode = t.tcode
+INNER JOIN dedtorol AS dt ON n.dtcode = dt.dtcode;
+
+-- 3
+SELECT * FROM student WHERE stcode = 'SA14D005';
+
+-- 4
+SELECT o.stname, ns.libname
+FROM bookgive AS na
+INNER JOIN student AS o ON na.stcode = o.stcode
+INNER JOIN librarian AS ns ON na.libcode = ns.libcode
+WHERE na.bookcode = 'Swco001';
+
+--5
+SELECT o.stname, n.bookname, na.enterognoo, na.retognoo, ns.libname
+FROM bookgive AS na
+INNER JOIN student AS o ON na.stcode = o.stcode
+INNER JOIN book AS n ON na.bookcode = n.bookcode
+INNER JOIN librarian AS ns ON na.libcode = ns.libcode
+WHERE na.retognoo BETWEEN '2015-11-01' AND '2015-12-03';

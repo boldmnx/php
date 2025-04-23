@@ -1,0 +1,29 @@
+--1
+SELECT 
+	bg.bookcode "Номын код",
+	b.bookname "номын нэр",
+	b.author "зохиогч",
+	t.tname "төрлийн нэр", 
+	bg.enterognoo "авсан огноо", 
+	bg.retognoo "буцаасан огноо", 
+	l.libname "номын санчийн нэр",
+	s.stname "оюутны нэр"
+FROM bookgive bg
+	INNER JOIN book b ON b.bookcode=bg.bookcode
+	INNER JOIN torol t ON t.tcode=b.tcode
+	INNER JOIN librarian l ON l.libcode=bg.libcode
+	INNER JOIN student s ON s.stcode=bg.stcode	
+
+--2
+
+SELECT
+	s.stcode "Оюутны код",
+	s.stlast "оюутны овог",
+	s.stname "оюутны нэр", 
+	s.regdug "регистрийн дугаар", 
+	m.mname "мэргэжлийн нэр",
+	s.phone "утас",
+	s.ognoo "огноо"
+FROM student s
+	INNER JOIN mergejil m ON m.mcode=s.mcode
+
