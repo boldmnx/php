@@ -1,12 +1,15 @@
 <?php
-session_start();
 require_once 'db.php';
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
-function isLoggedIn() {
+function isLoggedIn()
+{
   return isset($_SESSION['user_id']);
 }
 
-function isAdmin() {
+function isAdmin()
+{
   return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 }
-?>

@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../db/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $menu_id = (int) $_POST['menu_id'];
@@ -18,6 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $pdo->prepare("UPDATE menu SET average_rating = ? WHERE id = ?");
     $stmt->execute([$avg, $menu_id]);
 
-    header("Location: menu.php");
+    header("Location: /coffee_shop/menu/menu.php");
     exit();
 }

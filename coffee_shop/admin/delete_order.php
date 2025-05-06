@@ -1,5 +1,7 @@
 <?php
-require 'session.php';
+
+require_once '../db/db.php';
+require_once '../db/session.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -7,11 +9,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Админ эсвэл зөвшөөрөлтэй хэрэглэгч л устгах эрхтэй
 if (!isAdmin()) {
-    header("Location: login.php");
+    header("Location: /coffee_shop/auth/login.php");
     exit();
 }
 
-require 'db.php';
 
 // Захиалгын ID-г авах
 if (isset($_GET['id'])) {
@@ -27,7 +28,7 @@ if (isset($_GET['id'])) {
         $deleteStmt = $pdo->prepare("DELETE FROM orders WHERE id = ?");
         $deleteStmt->execute([$order_id]);
 
-        header("Location: admin_orders.php"); // Захиалгын жагсаалт руу буцах
+        header("Location: /coffee_shop/admin/admin_orders.php"); // Захиалгын жагсаалт руу буцах
         exit();
     } else {
         die("Захиалга олдсонгүй.");
