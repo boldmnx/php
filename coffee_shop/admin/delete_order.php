@@ -18,17 +18,15 @@ if (!isAdmin()) {
 if (isset($_GET['id'])) {
     $order_id = (int)$_GET['id'];
 
-    // Захиалга байх эсэхийг шалгах
     $stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ?");
     $stmt->execute([$order_id]);
     $order = $stmt->fetch();
 
     if ($order) {
-        // Захиалгыг устгах
         $deleteStmt = $pdo->prepare("DELETE FROM orders WHERE id = ?");
         $deleteStmt->execute([$order_id]);
 
-        header("Location: /coffee_shop/admin/admin_orders.php"); // Захиалгын жагсаалт руу буцах
+        header("Location: /coffee_shop/admin/admin_orders.php"); 
         exit();
     } else {
         die("Захиалга олдсонгүй.");

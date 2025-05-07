@@ -1,15 +1,20 @@
 <?php
-
-ob_start() ;
-
-
+ob_start();
 ?>
-<main class="container text-center mt-5">
+<!-- <main class="container text-center mt-5">
     <h2 class="display-5 fw-bold">Welcome to Our Coffee Shop</h2>
     <p class="lead">Enjoy your coffee and rate our drinks!</p>
-    <!-- <img src="coffee.jpg" alt="Coffee" class="img-fluid rounded shadow mt-3" style="max-height: 300px;"> -->
+</main> -->
+
+<main class="container text-center mt-5 py-5" style="background: url('uploads/Americano.png'); background-size: 'cover'; min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; ">
+    <h2 class="display-5 fw-bold">Welcome to Our Coffee Shop</h2>
+    <p class="lead">Enjoy your coffee and rate our drinks!</p>
 </main>
 <?php
 $content = ob_get_clean();
 include 'layout.php'; ?>
-
